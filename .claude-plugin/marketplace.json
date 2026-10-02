@@ -1,0 +1,16 @@
+{
+  "name": "dirox",
+  "owner": {
+    "name": "Dirox"
+  },
+  "metadata": {
+    "description": "Dirox internal Claude Code plugins."
+  },
+  "plugins": [
+    {
+      "name": "dirox-kit",
+      "source": "./plugins/dirox-kit",
+      "description": "Dirox way of working with Claude Code: project kickoff, ticket stages (intent, spec, plan, verify, done) and project setup."
+    }
+  ]
+}

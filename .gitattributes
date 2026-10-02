@@ -1,0 +1,2 @@
+# Keep LF endings everywhere: hook scripts break in bash with Windows line endings.
+* text=auto eol=lf

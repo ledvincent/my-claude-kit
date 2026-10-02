@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Edit(./secrets/**)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push origin main:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -f:*)",
+      "Bash(git checkout -- :*)"
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "dirox": {
+      "source": {
+        "source": "github",
+        "repo": "YOUR-GITHUB-ORG/dirox-claude-kit"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "dirox-kit@dirox": true
+  }
+}
