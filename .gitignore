@@ -1,4 +1,21 @@
+# Personal Claude files
 .claude/settings.local.json
+CLAUDE.local.md
+
+# Secrets, just in case
+.env
+.env.*
+
+# Python (the docs scripts)
+__pycache__/
+*.pyc
+.venv/
+
+# OS and editors
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
+
+# Build leftovers
 *.zip
