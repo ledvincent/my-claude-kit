@@ -69,10 +69,11 @@ Then, in any git repo: `/dirox-kit:setup-project`, then `/dirox-kit:kickoff <KEY
 
 ## Share it with the team
 
-1. Push this folder to a GitHub repo, for example `YOUR-GITHUB-ORG/dirox-claude-kit`.
-2. Replace `YOUR-GITHUB-ORG` in `plugins/dirox-kit/templates/project/.claude/settings.json`.
-3. Every project set up with the kit then asks teammates to install it when they open the project.
-4. To ship an update: change the files, raise `version` in `plugin.json`, and push.
+The kit lives at `github.com/dirox-official/dirox-claude-kit` (private: you need read access to the repo).
+
+- Install it yourself: `claude plugin marketplace add dirox-official/dirox-claude-kit`, then `claude plugin install dirox-kit@dirox`.
+- Every project set up with the kit asks teammates to install it when they open the project (see `templates/project/.claude/settings.json`).
+- To ship an update: change the files, raise `version` in `plugin.json`, and push. Teammates get it with `claude plugin marketplace update dirox`.
 
 ## Connect Jira
 

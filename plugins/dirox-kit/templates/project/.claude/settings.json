@@ -19,7 +19,7 @@
     "dirox": {
       "source": {
         "source": "github",
-        "repo": "YOUR-GITHUB-ORG/dirox-claude-kit"
+        "repo": "dirox-official/dirox-claude-kit"
       }
     }
   },
