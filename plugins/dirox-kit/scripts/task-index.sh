@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# SessionStart hook: rebuilds tasks/index.md (open work, git-ignored) from the task files,
+# SessionStart hook: rebuilds .claude-dirox/tasks/index.md (open work, git-ignored) from the task files,
 # and prints a short summary that Claude Code adds to the session's context.
 # Plain bash + awk so it runs on macOS, Linux and Git Bash on Windows.
 
 set -u
 root="${CLAUDE_PROJECT_DIR:-$(pwd)}"
-tasks="$root/tasks"
+tasks="$root/.claude-dirox/tasks"
 [ -d "$tasks" ] || exit 0
 
 # Prints the front matter as key=value lines (approvals are flattened: intent=..., spec=...).
@@ -101,7 +101,7 @@ overlaps=$(printf '%s' "$pairs" | awk -F'\t' '
 } > "$tasks/index.md"
 
 # Short summary for Claude's context: kept small because it is added to every session.
-echo "dirox-kit: $open open ticket(s), listed in tasks/index.md."
+echo "dirox-kit: $open open ticket(s), listed in .claude-dirox/tasks/index.md."
 branch=$(git -C "$root" branch --show-current 2>/dev/null)
 current=$(printf '%s' "$branch" | grep -oE '[A-Z][A-Z0-9]+-[0-9]+' | head -n 1)
 if [ -n "$current" ]; then

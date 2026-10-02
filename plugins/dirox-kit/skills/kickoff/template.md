@@ -13,7 +13,7 @@ closed:           # date, set by /dirox-kit:kickoff at the end
 # {{ID}}: {{TITLE}}
 
 <!-- Kickoff plan. Approved by the Tech lead, the Architect and the PM, then turned into the
-     foundation files (CLAUDE.md, docs/, ADRs, skeleton specs) and the Jira backlog. -->
+     foundation files (CLAUDE.md, .claude-dirox/docs/, ADRs, skeleton specs) and the Jira backlog. -->
 
 ## Brief
 <!-- Where the client brief is, and a short summary. Do not paste a confidential brief here. -->
@@ -41,7 +41,7 @@ closed:           # date, set by /dirox-kit:kickoff at the end
 <!-- - Decision: reason. ADR needed -->
 
 ## Features
-<!-- One line per feature; each gets a skeleton spec in docs/specs/ -->
+<!-- One line per feature; each gets a skeleton spec in .claude-dirox/docs/specs/ -->
 
 ## Open questions
 

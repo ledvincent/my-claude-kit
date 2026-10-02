@@ -1,6 +1,6 @@
 {
   "name": "dirox-kit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Dirox way of working with Claude Code: project kickoff, ticket stages (intent, spec, plan, verify, done) and project setup.",
   "author": {
     "name": "Dirox"

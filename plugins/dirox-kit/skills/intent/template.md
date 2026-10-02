@@ -33,7 +33,7 @@ closed:           # date, set by /dirox-kit:done
 <!-- From the Jira ticket, made testable: AC-1: Given …, when …, then …
      A criterion not in Jira yet is marked "(not in Jira yet)" and added there before approval. -->
 ### Living spec changes
-<!-- Which docs/specs/ file changes, and how. Applied by /dirox-kit:done. -->
+<!-- Which .claude-dirox/docs/specs/ file changes, and how. Applied by /dirox-kit:done. -->
 
 ## Plan
 <!-- Written by /dirox-kit:plan after the Spec is approved. -->

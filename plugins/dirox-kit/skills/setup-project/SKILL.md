@@ -1,6 +1,6 @@
 ---
 name: setup-project
-description: Set up a repository for the Dirox workflow. Adds the empty starter files (CLAUDE.md, .claude/settings.json, docs/, tasks/) from the kit's templates. /dirox-kit:kickoff fills them in.
+description: Set up a repository for the Dirox workflow. Adds the empty starter files (CLAUDE.md, .claude/settings.json, .claude-dirox/docs/, .claude-dirox/tasks/) from the kit's templates. /dirox-kit:kickoff fills them in.
 disable-model-invocation: true
 ---
 
@@ -17,7 +17,7 @@ Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/project/`. This skill only lay
    - Already in the project: do not touch it. Tell the user what the template has that their file lacks, and ask whether to merge it.
    Do not copy `templates/optional/`; the kickoff adds those files only if the project needs them.
 
-4. **Update .gitignore.** Add these lines if they are missing: `.claude/settings.local.json`, `.env`, `.env.*`, `tasks/index.md`.
+4. **Update .gitignore.** Add these lines if they are missing: `.claude/settings.local.json`, `.env`, `.env.*`, `.claude-dirox/tasks/index.md`.
 
 5. **Report.** List the files created and the files kept. Next steps for the user:
    - commit them on a branch

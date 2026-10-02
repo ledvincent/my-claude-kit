@@ -24,12 +24,12 @@ Base branch: `git symbolic-ref --short refs/remotes/origin/HEAD` without the `or
    - Light ticket: there is no Spec, so check against the Jira ticket's acceptance criteria (if it has any), the Intent and the Plan.
 
 4. **Update the living docs** in the same branch:
-   - Apply the Spec's "Living spec changes" to the `docs/specs/` file. Create the file from `docs/specs/_template.md` if it does not exist.
-   - Update `docs/architecture.md` (or `docs/modules.md` if it exists) if modules, data flow or deployment changed.
-   - Add a line to `docs/index.md` for every doc file you create.
+   - Apply the Spec's "Living spec changes" to the `.claude-dirox/docs/specs/` file. Create the file from `.claude-dirox/docs/specs/_template.md` if it does not exist.
+   - Update `.claude-dirox/docs/architecture.md` (or `.claude-dirox/docs/modules.md` if it exists) if modules, data flow or deployment changed.
+   - Add a line to `.claude-dirox/docs/index.md` for every doc file you create.
    - If no doc needs changing, write `No doc change: <reason>` in the Review.
 
-5. **Record decisions.** For each Plan decision marked "ADR needed", create `docs/adr/NNN-short-title.md` from `docs/adr/000-template.md`, using the next free number. Never edit the content of an existing ADR. Only its Status line may change, for example to "Superseded by 007".
+5. **Record decisions.** For each Plan decision marked "ADR needed", create `.claude-dirox/docs/adr/NNN-short-title.md` from `.claude-dirox/docs/adr/000-template.md`, using the next free number. Never edit the content of an existing ADR. Only its Status line may change, for example to "Superseded by 007".
 
 6. **Write the Review section** above `### Verification`:
    - what was done, in 2–3 lines
