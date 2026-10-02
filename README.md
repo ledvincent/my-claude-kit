@@ -7,7 +7,7 @@ Every developer installs it once; every project gets the same commands, rules an
 
 | Command | What it does |
 |---|---|
-| `/dirox-kit:setup-project` | Adds the empty starter files to a repo: CLAUDE.md, .claude/settings.json and the `.claude-dirox/` folder |
+| `/dirox-kit:setup-project` | Adds the empty starter files to a repo (CLAUDE.md, .claude/settings.json, the `.claude-dirox/` folder), or updates a project set up with an older kit |
 | `/dirox-kit:kickoff <ID>` | Once per project: plans the system, then writes CLAUDE.md, the docs, the first ADRs, a skeleton spec per feature and the backlog |
 | `/dirox-kit:intent <ID>` | Pulls the Jira ticket, creates `.claude-dirox/tasks/<ID>.md`, writes the Intent |
 | `/dirox-kit:spec <ID>` | Writes requirements and acceptance criteria (after the Intent is approved) |
@@ -90,7 +90,18 @@ The kit lives at `github.com/dirox-official/dirox-claude-kit` (private: you need
 
 - Install it yourself: `claude plugin marketplace add dirox-official/dirox-claude-kit`, then `claude plugin install dirox-kit@dirox`.
 - Every project set up with the kit asks teammates to install it when they open the project (see `templates/project/.claude/settings.json`).
-- To ship an update: change the files, raise `version` in `plugin.json`, and push. Teammates get it with `claude plugin marketplace update dirox`.
+- To ship an update: change the files, raise `version` in `plugin.json`, and push. Teammates get it with `claude plugin marketplace update dirox`, then `claude plugin update dirox-kit@dirox`, and restart Claude Code.
+- If git says `Repository not found` or `Cannot prompt`, git is not using a GitHub account that can see the repo. Run `gh auth login` (once), `gh auth switch --user <your Dirox account>` if you have several, and `gh auth setup-git`.
+
+## Update a project
+
+Updating the plugin updates the commands. A project's own files only change when you run, in that project:
+
+```
+/dirox-kit:setup-project
+```
+
+On a project set up with an older kit, it moves `docs/` and `tasks/` into `.claude-dirox/`, fixes the paths, rewrites only the kit's sections of CLAUDE.md, and adds the files that are new in the templates. It shows the plan first, never deletes or overwrites what people wrote, and leaves the commit to you. At session start, the plugin tells Claude when a project still has the old layout.
 
 ## Connect Jira
 

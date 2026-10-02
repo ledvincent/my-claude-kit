@@ -6,6 +6,12 @@
 set -u
 root="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 tasks="$root/.claude-dirox/tasks"
+
+# A project set up with kit 0.1 / 0.2 keeps its files in docs/ and tasks/ at the root.
+if [ -f "$root/tasks/README.md" ] && grep -q '/dirox-kit:' "$root/tasks/README.md"; then
+  echo "dirox-kit: this project still uses the old layout (docs/ and tasks/ at the root). Tell the user to run /dirox-kit:setup-project to move them into .claude-dirox/."
+fi
+
 [ -d "$tasks" ] || exit 0
 
 # Prints the front matter as key=value lines (approvals are flattened: intent=..., spec=...).
