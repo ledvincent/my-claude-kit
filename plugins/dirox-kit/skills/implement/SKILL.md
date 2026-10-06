@@ -1,30 +1,35 @@
 ---
-name: plan
-description: Write the Plan section of a ticket's task file (files to change, order, tests, risks) after the Spec is approved.
+name: implement
+description: Build an approved change. Checks that the proposal was approved (merged proposal PR for a big change, an approving review for a normal one), then runs OpenSpec apply following the project rules in CLAUDE.md. Also builds trivial changes, which have no OpenSpec change.
 argument-hint: <JIRA-ID>
 disable-model-invocation: true
 ---
 
-# Plan: how we will build it
+# Implement a change
 
 Ticket: $ARGUMENTS (if empty, take the ID from the branch name).
 
-1. **Check the gate.** Read `.claude-dirox/tasks/<ID>.md`.
-   - Full ticket: `approvals: spec:` must be filled.
-   - Light ticket: `approvals: intent:` must be filled.
-   If not, stop and ask for the approval first.
+Base branch: `git symbolic-ref --short refs/remotes/origin/HEAD` without the `origin/` prefix, or `main` if that fails.
 
-2. **Find the code, narrowly.** Start from `.claude-dirox/docs/index.md`. Use `.claude-dirox/docs/architecture.md` (and `.claude-dirox/docs/tech-stack.md` or `.claude-dirox/docs/modules.md` if they exist) to find the right modules, and read the ADRs in that area. Then search (Grep or Glob) for the specific names you need and read only those files. Never read the whole of `src/`.
+1. **Find the change.** Look in `openspec/changes/` (not `archive/`) for the folder starting with the ticket ID in lowercase followed by `-`.
+   - **None**: ask whether this is a trivial change (no change in behaviour). If yes, skip to step 4. If not, stop: next is `/dirox-kit:start-change <ID>`.
+   - **Found**: read `Size:` at the top of its `proposal.md`.
 
-3. **Write the Plan section:**
-   - Files to change: one line each, `` `path/to/file` — why ``. Include the test files.
-   - Order of work: small steps, each one leaving the code working and testable.
-   - Proof: which test proves which acceptance criterion (AC-1 → `test name`).
-   - Risks: what could break, and what else uses this code.
-   - Decisions: choices that would be costly to reverse (framework, data model, security, hosting). Mark them "ADR needed".
+2. **Check the approval.** The people approve; you only check. Never approve, merge or review a PR yourself.
+   - **Big**: run `git fetch origin <base>`, then `git cat-file -e origin/<base>:openspec/changes/<name>/proposal.md`. It must succeed: the proposal PR is merged. If the current branch was made before that merge, suggest updating it from `<base>` first.
+   - **Normal**: run `gh pr view --json number,author,reviews,commits`. There must be a review with `state: APPROVED` from someone other than the PR author. If `openspec/changes/<name>/` changed in a commit after that review, the approval is out of date: ask for a new one.
+   - `gh` not available: ask the person who approved, and when. Continue only with a clear answer.
+   Not approved: stop and say what is missing.
 
-4. **Check for overlap.** Look at the other task files in `.claude-dirox/tasks/` that have no `closed:` date. If any of them lists the same paths under Files to change, warn the user and name the ticket and its owner so they can coordinate. (The plugin's session-start hook also lists overlaps in `.claude-dirox/tasks/index.md`, but only for plans written before the session started.)
+3. **Check the plan is still valid.** `openspec validate "<name>" --strict` must pass. If something about the code makes the plan wrong, stop and suggest updating it with the `openspec-update-change` skill (`/opsx:update`); a big change then needs a new approval.
 
-5. **Stop.** Show the plan. Ask the person to approve by writing their name and date under `approvals: plan:`, then to run `/dirox-kit:plan <ID>` again to start the build. Never fill an approval yourself.
+4. **Build.**
+   - With a change: use the `openspec-apply-change` skill (the same as `/opsx:apply`) for `<name>`. It works through `tasks.md` and ticks each task.
+   - Trivial: make the change directly. Keep it small.
+   In both cases, follow the rules in `CLAUDE.md`:
+   - Read narrowly: the files the design and tasks name, and what you find by searching for specific names. Never read the whole codebase.
+   - Each scenario gets a test whose name contains the scenario's name, as listed in the Proof tasks.
+   - Never change a test just to make it pass. Ask before refactoring outside the change.
+   - Run the test command from `CLAUDE.md` as you go.
 
-6. **Build (only when `approvals: plan:` is already filled when this skill starts).** Skip steps 2 to 5. Follow the Plan step by step and run the tests as you go. If the Plan needs to change, update the Plan section first and tell the user why. When the build is finished: `/dirox-kit:verify <ID>` for a full ticket, `/dirox-kit:done <ID>` for a light one.
+5. **Stop** when every task is done and the tests pass. Show what changed. Next: `/dirox-kit:verify <ID>`, or `/dirox-kit:close-change <ID>` for a trivial change.
