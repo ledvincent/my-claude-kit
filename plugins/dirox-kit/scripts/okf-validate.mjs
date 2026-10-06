@@ -238,6 +238,8 @@ function checkLog(file) {
   for (let i = 1; i < dates.length; i++) {
     if (dates[i] > dates[i - 1]) { warn(file, "entries should be newest first"); break; }
   }
+  const repeated = [...new Set(dates.filter((d, i) => dates.indexOf(d) !== i))];
+  if (repeated.length) warn(file, `date heading repeated (${repeated.join(", ")}): put that day's entries under one heading`);
 }
 
 function checkReserved(node, isRoot) {
