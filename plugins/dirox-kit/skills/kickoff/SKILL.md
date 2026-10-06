@@ -48,7 +48,7 @@ Only when the PR has approving reviews from the Tech lead, the Architect and the
    - Add requirement `Knowledge:` links from the change's specs to these concepts.
    - Add the `okf/log.md` line, then `node "${CLAUDE_PLUGIN_ROOT}/scripts/okf-validate.mjs" okf --write`, and fix every error.
 
-7. **Fill CLAUDE.md**: every TODO (what the project is, stack and versions, the commands, project rules). Leave a TODO where the plan does not say. Keep it under 150 lines. Fill `.github/CODEOWNERS` with the real people or teams if the PR review named them.
+7. **Fill CLAUDE.md**: every TODO (what the project is, stack and versions, the commands, project rules). Leave a TODO where the plan does not say. Keep it under 150 lines. Fill `.github/CODEOWNERS` with the real people or teams if the PR review named them. If the team uses Jira through MCP, offer to add `${CLAUDE_PLUGIN_ROOT}/templates/optional/.mcp.json` at the repo root (ask first).
 
 8. **Archive the kickoff change.** Tick the foundation tasks, then use the `openspec-archive-change` skill (`/opsx:archive`): it creates `openspec/specs/<capability>/spec.md` from the change's specs. Run `openspec validate --all --strict --no-interactive` and `node .github/scripts/okf-validate.mjs okf`; both must pass.
 

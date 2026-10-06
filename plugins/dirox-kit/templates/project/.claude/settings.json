@@ -1,4 +1,7 @@
 {
+  "env": {
+    "OPENSPEC_TELEMETRY": "0"
+  },
   "permissions": {
     "deny": [
       "Read(./.env)",
@@ -12,7 +15,9 @@
       "Bash(git push origin main:*)",
       "Bash(git reset --hard:*)",
       "Bash(git clean -f:*)",
-      "Bash(git checkout -- :*)"
+      "Bash(git checkout -- :*)",
+      "Bash(gh pr merge:*)",
+      "Bash(gh pr review:*)"
     ]
   },
   "extraKnownMarketplaces": {
