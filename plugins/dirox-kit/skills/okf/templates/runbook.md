@@ -1,15 +1,31 @@
-# Deployments: {{PROJECT_NAME}}
+---
+type: Runbook
+title: <action, for example Deploy to production>
+description: <one sentence, when to run it and what it achieves>
+owner: <person accountable>
+status: stable
+tags: []
+---
+# <Procedure title>
 
-<!-- Optional. Added at kickoff when there are several environments or a CI/CD pipeline.
-     Read only by deployment tasks. Never write secrets here; name where they are stored. -->
+<!-- Saved in okf/runbooks/. Never write secrets here: name where they are stored. -->
+
+## When
+What triggers this procedure.
+
+## Before you start
+Access, tools and checks needed.
+
+## Steps
+1. …
+
+## Check it worked
+How to confirm the result.
+
+## Roll back
+How to undo it if something goes wrong.
 
 ## Environments
 | Environment | URL | Where it runs | Deployed from |
 |---|---|---|---|
-| TODO | | | |
-
-## CI/CD
-TODO what runs on a PR, what runs on merge, how a release goes out.
-
-## Configuration
-TODO which settings change per environment, and where they are stored (never the values).
+| | | | |

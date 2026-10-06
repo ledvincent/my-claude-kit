@@ -1,11 +1,17 @@
-# NNN. <Decision title>
+---
+type: Decision
+title: <short statement, for example Use PostgreSQL for orders>
+description: <one sentence, what was decided and why>
+owner: <person accountable for the decision>
+status: stable
+tags: []
+---
+# <Decision title>
 
-Status: Accepted          <!-- Accepted · Superseded by NNN · Deprecated -->
-Date: YYYY-MM-DD
-Ticket: <JIRA-ID>
+Date: YYYY-MM-DD · Jira: <KEY-123> · Change: `openspec/changes/archive/<date>-<change-id>/`
 
-<!-- ADR = Architecture Decision Record. Add-only: never rewrite an accepted ADR.
-     To change a decision, write a new ADR and set this one's Status to "Superseded by NNN". -->
+<!-- Add-only. To change this decision, write a new one, set this one's status to deprecated
+     and add "Superseded by [NNN](/decisions/NNN-title.md)." at the top of this body. -->
 
 ## Context
 What problem we faced and what constrained the choice.

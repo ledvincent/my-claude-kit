@@ -1,23 +1,33 @@
-# Architecture: {{PROJECT_NAME}}
+---
+type: Architecture
+title: Architecture overview
+description: <one sentence, what the system is made of and how it runs>
+owner: <architect>
+status: draft
+tags: []
+---
+# Architecture overview
 
-Status: draft, to review
-
-<!-- One page. What a new developer (or Claude) needs before touching the code.
-     Updated by /dirox-kit:done when modules, data flow or deployment change. -->
+<!-- One page: what a new developer (or Claude) needs before touching the code. Saved as
+     okf/architecture/overview.md. Behaviour belongs in openspec/specs/, not here. Once the
+     module table passes about 15 rows, give each module its own okf/architecture/modules/<name>.md. -->
 
 ## Overview
-TODO two or three sentences: what the system does and for whom.
+Two or three sentences: what the system does and for whom.
 
 ## Modules
 | Module | Folder | Does |
 |---|---|---|
-| TODO | `src/…` | one line |
+| | `src/…` | one line |
 
 ## Data flow
-TODO how a typical request or job moves through the modules.
+How a typical request or job moves through the modules.
 
 ## External services
-TODO databases, queues, third-party APIs.
+Databases, queues, third-party APIs. Each one with more to say gets a file in `/integrations/`.
 
 ## Deployment
-TODO environments, how a release goes out, where it runs.
+Environments, how a release goes out, where it runs. Step-by-step procedures go in `/runbooks/`.
+
+## Decisions
+Links to the `/decisions/` files that shaped this architecture.

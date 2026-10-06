@@ -1,15 +1,23 @@
-# Tech stack: {{PROJECT_NAME}}
+---
+type: Architecture
+title: Tech stack
+description: <one sentence, the main languages, frameworks and versions>
+owner: <architect>
+status: stable
+tags: []
+---
+# Tech stack
 
-<!-- Optional. Added at kickoff when versions or library rules matter. Read at Plan.
-     Changing a line here is a decision: it needs an ADR. -->
+<!-- Saved as okf/architecture/tech-stack.md, only when versions or library rules matter.
+     Changing a line here is a decision: it needs a file in /decisions/. -->
 
 ## Frameworks and versions
 | Layer | Choice | Version |
 |---|---|---|
-| TODO | | |
+| | | |
 
 ## Allowed libraries
-<!-- - name: what we use it for -->
+- name: what we use it for
 
 ## Banned libraries
-<!-- - name: why, and what to use instead -->
+- name: why, and what to use instead
