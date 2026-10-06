@@ -6,10 +6,8 @@ CLAUDE.local.md
 .env
 .env.*
 
-# Python (the docs scripts)
-__pycache__/
-*.pyc
-.venv/
+# Node
+node_modules/
 
 # OS and editors
 .DS_Store

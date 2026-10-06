@@ -1,6 +1,6 @@
 {
   "name": "dirox-kit",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Dirox way of working with Claude Code on top of OpenSpec (behaviour specs) and OKF (project knowledge): project setup and kickoff, Jira-driven changes (start, implement, verify, close) and the OKF validator.",
   "author": {
     "name": "Dirox"
