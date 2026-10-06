@@ -10,7 +10,7 @@
     {
       "name": "dirox-kit",
       "source": "./plugins/dirox-kit",
-      "description": "Dirox way of working with Claude Code: project kickoff, ticket stages (intent, spec, plan, verify, done) and project setup."
+      "description": "Dirox way of working with Claude Code on top of OpenSpec (behaviour specs) and OKF (project knowledge): project setup and kickoff, Jira-driven changes (start, implement, verify, close) and the OKF validator."
     }
   ]
 }
